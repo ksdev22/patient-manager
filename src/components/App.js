@@ -9,6 +9,7 @@ import PatientDetailsCard from "./PatientDetailsCard";
 import Message from "./Message";
 import Filters from "./Filters";
 import ColumnsCard from "./ColumnsCard";
+import PageChanger from "./PageChanger";
 
 export default function App() {
   const [currPage, setCurrPage] = useState(1);
@@ -200,22 +201,22 @@ export default function App() {
 
       <Message message={message} />
 
-      <div className="h-[80vh]">
-        {isNavbar && (
-          <div
-            style={{
-              marginTop: navbarRef.current.clientHeight + 25,
-            }}
-          ></div>
-        )}
-        <div className="flex items-center justify-end mb-3 px-10">
-          <button
-            className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
-            onClick={() => setIsAddPatientCard(true)}
-          >
-            Add Patient
-          </button>
-        </div>
+      {isNavbar && (
+        <div
+          style={{
+            marginTop: navbarRef.current.clientHeight + 25,
+          }}
+        ></div>
+      )}
+      <div className="flex items-center justify-end mb-3 px-10">
+        <button
+          className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
+          onClick={() => setIsAddPatientCard(true)}
+        >
+          Add Patient
+        </button>
+      </div>
+      <div className="h-[90vh]">
         <Filters
           navbarRef={navbarRef}
           filters={filters}
@@ -280,6 +281,7 @@ export default function App() {
           </div>
         )}
       </div>
+      <PageChanger currPage={currPage} setCurrPage={setCurrPage} />
     </div>
   );
 }

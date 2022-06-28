@@ -1,5 +1,3 @@
-import PageChanger from "./PageChanger";
-
 export default function PatientList({
   patients,
   filters,
@@ -65,7 +63,6 @@ export default function PatientList({
           </li>
         ))}
       </ul>
-      <PageChanger currPage={currPage} setCurrPage={setCurrPage} />
     </div>
   );
 }
