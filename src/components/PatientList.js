@@ -11,14 +11,14 @@ export default function PatientList({
 }) {
   return (
     <div>
-      <ul className="scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full py-3 pb-10 mb-5 overflow-scroll h-[55vh]">
-        <li className="grid grid-flow-col font-bold px-5 border-b-2 border-black select-none min-w-max">
+      <ul className="relative scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full pb-10 mb-5 overflow-scroll h-[55vh]">
+        <li className="bg-white z-[1000] grid grid-flow-col font-bold px-5 border-b-2 border-black select-none min-w-max sticky top-0 left-0">
           {filters.columns.map((column) => {
             if (column.checked) {
               return (
                 <div
                   key={column.name}
-                  className="w-40 border-l-2 px-3 text-center"
+                  className="w-40 border-l-2 px-3 py-3 text-center"
                 >
                   {column.name === "name" && "Name"}
                   {column.name === "age" && "Age"}

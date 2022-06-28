@@ -64,7 +64,7 @@ export default function App() {
 
   const getPatients = async () => {
     const response = await axios.get(
-      `https://patient-manager-json-server.herokuapp.com/api/patients?_page=${currPage}&_limit=10&site=${site}&_sort=name`
+      `https://patient-manager-json-server.herokuapp.com/api/patients?_page=${currPage}&_limit=20&site=${site}&_sort=name`
     );
     if (response.status === 200) {
       if (isMounted.current) {
@@ -208,7 +208,7 @@ export default function App() {
           }}
         ></div>
       )}
-      <div className="flex items-center justify-end mb-3 px-10">
+      <div className="flex items-center justify-end mb-3 px-10 h-[10vh]">
         <button
           className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
           onClick={() => setIsAddPatientCard(true)}
