@@ -178,7 +178,7 @@ export default function AddPatientCard({
             </div>
             <div className="sticky bottom-0 left-0 w-full h-16 bg-slate-200 flex justify-around items-center">
               <button
-                className="bg-orange-400 hover:bg-orange-500 text-white p-1 px-4 rounded"
+                className="font-bold hover:bg-slate-600 bg-white text-black hover:text-white p-1 px-4 rounded"
                 onClick={(e) => {
                   e.preventDefault();
                   setNewPatient({
@@ -196,7 +196,7 @@ export default function AddPatientCard({
                 Reset
               </button>
               <button
-                className="bg-blue-500 hover:bg-blue-600 text-white p-1 px-4 rounded"
+                className="font-bold bg-slate-600 hover:bg-white hover:text-black text-white p-1 px-4 rounded"
                 onClick={(e) => {
                   e.preventDefault();
                   submitAddPatient(newPatient);

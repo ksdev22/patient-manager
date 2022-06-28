@@ -204,11 +204,11 @@ export default function App() {
       {isNavbar && (
         <div
           style={{
-            marginTop: navbarRef.current.clientHeight + 25,
+            marginTop: navbarRef.current.clientHeight,
           }}
         ></div>
       )}
-      <div className="flex items-center justify-end mb-3 px-10 h-[10vh]">
+      <div className="flex items-center justify-end px-10 h-[10vh]">
         <button
           className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
           onClick={() => setIsAddPatientCard(true)}

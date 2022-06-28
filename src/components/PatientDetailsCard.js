@@ -188,7 +188,7 @@ export default function PatientDetailsCard({
             </div>
             <div className="sticky bottom-0 left-0 w-full h-16 bg-slate-200 flex justify-around items-center">
               <button
-                className="bg-amber-600 hover:bg-amber-700 text-white p-1 px-4 rounded"
+                className="font-bold bg-white hover:bg-slate-600 hover:text-white p-1 px-4 rounded"
                 onClick={(e) => {
                   e.preventDefault();
                   setCurrPatient({
@@ -207,7 +207,7 @@ export default function PatientDetailsCard({
                 Cancel
               </button>
               <button
-                className="bg-blue-500 hover:bg-blue-600 text-white p-1 px-4 rounded"
+                className="font-bold bg-slate-600 hover:bg-white hover:text-black text-white p-1 px-5 rounded"
                 onClick={(e) => {
                   e.preventDefault();
                   updatePatientDetails(currPatient);

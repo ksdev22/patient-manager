@@ -11,7 +11,7 @@ export default function Filters({
   textSearch,
 }) {
   return (
-    <div className="bg-gray-100 border flex flex-col md:flex-row md:items-center py-2 px-5 space-y-5 md:space-y-0">
+    <div className="bg-gray-100 border flex flex-col md:flex-row md:items-center py-2 px-5 space-y-5 md:space-y-0 h-[10vh]">
       <div className="flex items-center ml-auto">
         <svg
           xmlns="http://www.w3.org/2000/svg"
