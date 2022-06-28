@@ -276,7 +276,7 @@ export default function App() {
             />
           </div>
         ) : (
-          <div className="text-3xl h-screen w-screen flex items-center justify-center">
+          <div className="text-3xl h-[70vh] w-screen flex items-center justify-center">
             Loading...
           </div>
         )}
