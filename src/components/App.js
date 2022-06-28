@@ -164,9 +164,9 @@ export default function App() {
     }
   };
 
-  const filteredPatients = patients.filter((p) =>
-    p.name.toLowerCase().includes(searchString.toLowerCase())
-  );
+  // const filteredPatients = patients.filter((p) =>
+  //   p.name.toLowerCase().includes(searchString.toLowerCase())
+  // );
 
   const textSearch = async (e) => {
     setSearchString(e.target.value);
@@ -200,84 +200,86 @@ export default function App() {
 
       <Message message={message} />
 
-      {isNavbar && (
-        <div
-          style={{
-            marginTop: navbarRef.current.clientHeight + 25,
-          }}
-        ></div>
-      )}
-      <div className="flex items-center justify-end mb-3 px-10">
-        <button
-          className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
-          onClick={() => setIsAddPatientCard(true)}
-        >
-          Add Patient
-        </button>
+      <div className="h-[80vh]">
+        {isNavbar && (
+          <div
+            style={{
+              marginTop: navbarRef.current.clientHeight + 25,
+            }}
+          ></div>
+        )}
+        <div className="flex items-center justify-end mb-3 px-10">
+          <button
+            className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
+            onClick={() => setIsAddPatientCard(true)}
+          >
+            Add Patient
+          </button>
+        </div>
+        <Filters
+          navbarRef={navbarRef}
+          filters={filters}
+          currPage={currPage}
+          setCurrPage={setCurrPage}
+          setIsAddPatientCard={setIsAddPatientCard}
+          searchString={searchString}
+          isColumnsCard={isColumnsCard}
+          setIsColumnsCard={setIsColumnsCard}
+          textSearch={textSearch}
+        />
+        <ColumnsCard
+          isColumnsCard={isColumnsCard}
+          setIsColumnsCard={setIsColumnsCard}
+          filters={filters}
+          setFilters={setFilters}
+        />
+
+        {!isLoading ? (
+          <div
+            // style={{
+            //   marginTop: navbarRef.current.clientHeight,
+            //   paddingTop: "25px",
+            // }}
+            className="relative"
+          >
+            <AddPatientCard
+              isAddPatientCard={isAddPatientCard}
+              setIsAddPatientCard={setIsAddPatientCard}
+              newPatient={newPatient}
+              setNewPatient={setNewPatient}
+              site={site}
+              submitAddPatient={submitAddPatient}
+              setMessage={setMessage}
+            />
+
+            <PatientDetailsCard
+              isPatientDetailsCard={isPatientDetailsCard}
+              setIsPatientDetailsCard={setIsPatientDetailsCard}
+              currPatient={currPatient}
+              setCurrPatient={setCurrPatient}
+              updatePatientDetails={updatePatientDetails}
+              deletePatient={deletePatient}
+              setMessage={setMessage}
+            />
+
+            <PatientList
+              currPage={currPage}
+              setCurrPage={setCurrPage}
+              patients={patients}
+              filters={filters}
+              isPatientDetailsCard={isPatientDetailsCard}
+              setIsPatientDetailsCard={setIsPatientDetailsCard}
+              currPatient={currPatient}
+              setCurrPatient={setCurrPatient}
+              site={site}
+            />
+          </div>
+        ) : (
+          <div className="text-3xl h-screen w-screen flex items-center justify-center">
+            Loading...
+          </div>
+        )}
       </div>
-      <Filters
-        navbarRef={navbarRef}
-        filters={filters}
-        currPage={currPage}
-        setCurrPage={setCurrPage}
-        setIsAddPatientCard={setIsAddPatientCard}
-        searchString={searchString}
-        isColumnsCard={isColumnsCard}
-        setIsColumnsCard={setIsColumnsCard}
-        textSearch={textSearch}
-      />
-      <ColumnsCard
-        isColumnsCard={isColumnsCard}
-        setIsColumnsCard={setIsColumnsCard}
-        filters={filters}
-        setFilters={setFilters}
-      />
-
-      {!isLoading ? (
-        <div
-          // style={{
-          //   marginTop: navbarRef.current.clientHeight,
-          //   paddingTop: "25px",
-          // }}
-          className="relative"
-        >
-          <AddPatientCard
-            isAddPatientCard={isAddPatientCard}
-            setIsAddPatientCard={setIsAddPatientCard}
-            newPatient={newPatient}
-            setNewPatient={setNewPatient}
-            site={site}
-            submitAddPatient={submitAddPatient}
-            setMessage={setMessage}
-          />
-
-          <PatientDetailsCard
-            isPatientDetailsCard={isPatientDetailsCard}
-            setIsPatientDetailsCard={setIsPatientDetailsCard}
-            currPatient={currPatient}
-            setCurrPatient={setCurrPatient}
-            updatePatientDetails={updatePatientDetails}
-            deletePatient={deletePatient}
-            setMessage={setMessage}
-          />
-
-          <PatientList
-            currPage={currPage}
-            setCurrPage={setCurrPage}
-            patients={patients}
-            filters={filters}
-            isPatientDetailsCard={isPatientDetailsCard}
-            setIsPatientDetailsCard={setIsPatientDetailsCard}
-            currPatient={currPatient}
-            setCurrPatient={setCurrPatient}
-            site={site}
-          />
-        </div>
-      ) : (
-        <div className="text-3xl h-screen w-screen flex items-center justify-center">
-          Loading...
-        </div>
-      )}
     </div>
   );
 }
