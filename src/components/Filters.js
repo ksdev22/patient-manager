@@ -49,7 +49,7 @@ export default function Filters({
             />
           </svg>
           <input
-            className="border-b border-black px-2"
+            className="border-b border-black px-2 w-3/5"
             type="text"
             placeholder="Search patient name..."
             value={searchString}
