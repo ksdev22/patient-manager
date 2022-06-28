@@ -88,6 +88,7 @@ export default function App() {
   }, [site, currPage]);
 
   const submitAddPatient = async (newPatientData) => {
+    setIsLoading(true);
     const response = await axios.post(
       "https://patient-manager-json-server.herokuapp.com/api/patients",
       {
@@ -96,7 +97,6 @@ export default function App() {
       }
     );
     if (response.status === 201) {
-      setIsLoading(true);
       getPatients();
       setNewPatient({
         name: "",
@@ -115,6 +115,7 @@ export default function App() {
   };
 
   const updatePatientDetails = async (patientDetails) => {
+    setIsLoading(true);
     const response = await axios.put(
       `https://patient-manager-json-server.herokuapp.com/api/patients/${patientDetails.id}`,
       {
@@ -123,7 +124,6 @@ export default function App() {
       }
     );
     if (response.status === 200) {
-      setIsLoading(true);
       getPatients();
       setCurrPatient({
         name: "",
@@ -142,11 +142,11 @@ export default function App() {
   };
 
   const deletePatient = async (patientId) => {
+    setIsLoading(true);
     const response = await axios.delete(
       `https://patient-manager-json-server.herokuapp.com/api/patients/${patientId}`
     );
     if (response.status === 200) {
-      setIsLoading(true);
       getPatients();
       setIsPatientDetailsCard(false);
       setCurrPatient({
