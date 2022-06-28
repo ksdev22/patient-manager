@@ -1,0 +1,252 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useRef } from "react";
+import axios from "axios";
+// import { Helmet } from "react-helmet";
+import Navbar from "./Navbar";
+import PatientList from "./PatientList";
+import AddPatientCard from "./AddPatientCard";
+import PatientDetailsCard from "./PatientDetailsCard";
+import Message from "./Message";
+import Filters from "./Filters";
+import ColumnsCard from "./ColumnsCard";
+
+export default function App() {
+  const [currPage, setCurrPage] = useState(1);
+  const [patients, setPatients] = useState([]);
+  const navbarRef = useRef();
+  const [isNavbar, setIsNavbar] = useState(false);
+  const isMounted = useRef(true);
+  const [site, setSite] = useState("Mumbai"); // Mumbai && Bangalore
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAddPatientCard, setIsAddPatientCard] = useState(false);
+  const [newPatient, setNewPatient] = useState({
+    name: "",
+    age: "",
+    gender: "Male",
+    phone: "",
+    vaccinationStatus: "Fully Vaccinated",
+    vaccineName: "Covaxin",
+    symptoms: "",
+    medicalHistory: "",
+  });
+  const [currPatient, setCurrPatient] = useState({
+    name: "",
+    age: "",
+    gender: "Male",
+    phone: "",
+    vaccinationStatus: "Fully Vaccinated",
+    vaccineName: "Covaxin",
+    symptoms: "",
+    medicalHistory: "",
+  });
+  const [isPatientDetailsCard, setIsPatientDetailsCard] = useState(false);
+  const [filters, setFilters] = useState({
+    columns: [
+      { name: "name", checked: true },
+      { name: "age", checked: true },
+      { name: "gender", checked: true },
+      { name: "phone", checked: false },
+      { name: "vaccinationStatus", checked: false },
+      { name: "vaccineName", checked: false },
+      { name: "symptoms", checked: false },
+      { name: "medicalHistory", checked: false },
+    ],
+  });
+  const [message, setMessage] = useState({ type: null, content: null });
+  const [searchString, setSearchString] = useState("");
+  const [isColumnsCard, setIsColumnsCard] = useState(false);
+
+  useEffect(() => {
+    if (navbarRef.current) setIsNavbar(true);
+  }, [navbarRef.current]);
+
+  const getPatients = async () => {
+    const response = await axios.get(
+      `/api/patients?_page=${currPage}&_limit=10&site=${site}&_sort=name`
+    );
+    if (response.status === 200) {
+      if (isMounted.current) {
+        // if (response.data.length > 0) {
+        setPatients(response.data);
+        // } else {
+        // setCurrPage((prev) => prev - 1);
+        // setPatients([]);
+        // }
+        setIsLoading(false);
+      }
+    }
+  };
+  useEffect(() => {
+    isMounted.current = true;
+    setIsLoading(true);
+    getPatients();
+    return () => {
+      isMounted.current = false;
+    };
+  }, [site, currPage]);
+
+  const submitAddPatient = async (newPatientData) => {
+    const response = await axios.post("/api/patients", {
+      ...newPatientData,
+      site: site,
+    });
+    if (response.status === 201) {
+      setIsLoading(true);
+      getPatients();
+      setNewPatient({
+        name: "",
+        age: "",
+        gender: "Male",
+        phone: "",
+        vaccinationStatus: "Fully Vaccinated",
+        vaccineName: "Covaxin",
+        symptoms: "",
+        medicalHistory: "",
+      });
+    } else {
+      alert("Error");
+      console.log(response);
+    }
+  };
+
+  const updatePatientDetails = async (patientDetails) => {
+    const response = await axios.put(`/patients/${patientDetails.id}`, {
+      ...patientDetails,
+      site: site,
+    });
+    if (response.status === 200) {
+      setIsLoading(true);
+      getPatients();
+      setCurrPatient({
+        name: "",
+        age: "",
+        gender: "Male",
+        phone: "",
+        vaccinationStatus: "Fully Vaccinated",
+        vaccineName: "Covaxin",
+        symptoms: "",
+        medicalHistory: "",
+      });
+    } else {
+      console.log(response);
+      alert("Error");
+    }
+  };
+
+  const deletePatient = async (patientId) => {
+    const response = await axios.delete(`/patients/${patientId}`);
+    if (response.status === 200) {
+      setIsLoading(true);
+      getPatients();
+      setIsPatientDetailsCard(false);
+      setCurrPatient({
+        name: "",
+        age: "",
+        gender: "Male",
+        phone: "",
+        vaccinationStatus: "Fully Vaccinated",
+        vaccineName: "Covaxin",
+        symptoms: "",
+        medicalHistory: "",
+      });
+    } else {
+      console.log(response);
+      alert("Error");
+    }
+  };
+
+  const filteredPatients = patients.filter((p) =>
+    p.name.toLowerCase().includes(searchString.toLowerCase())
+  );
+
+  return (
+    <div>
+      {/* <Helmet>
+        <title>M.G. Memorial hospital</title>
+      </Helmet> */}
+
+      <Navbar navbarRef={navbarRef} setSite={setSite} />
+
+      <Message message={message} />
+
+      {isNavbar && (
+        <div
+          style={{
+            marginTop: navbarRef.current.clientHeight + 25,
+          }}
+        ></div>
+      )}
+      <div className="flex items-center justify-end mb-3 px-10">
+        <button
+          className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
+          onClick={() => setIsAddPatientCard(true)}
+        >
+          Add Patient
+        </button>
+      </div>
+      <Filters
+        navbarRef={navbarRef}
+        filters={filters}
+        currPage={currPage}
+        setCurrPage={setCurrPage}
+        setIsAddPatientCard={setIsAddPatientCard}
+        searchString={searchString}
+        setSearchString={setSearchString}
+        isColumnsCard={isColumnsCard}
+        setIsColumnsCard={setIsColumnsCard}
+      />
+      <ColumnsCard
+        isColumnsCard={isColumnsCard}
+        setIsColumnsCard={setIsColumnsCard}
+        filters={filters}
+        setFilters={setFilters}
+      />
+
+      {!isLoading ? (
+        <div
+          // style={{
+          //   marginTop: navbarRef.current.clientHeight,
+          //   paddingTop: "25px",
+          // }}
+          className="relative"
+        >
+          <AddPatientCard
+            isAddPatientCard={isAddPatientCard}
+            setIsAddPatientCard={setIsAddPatientCard}
+            newPatient={newPatient}
+            setNewPatient={setNewPatient}
+            site={site}
+            submitAddPatient={submitAddPatient}
+            setMessage={setMessage}
+          />
+
+          <PatientDetailsCard
+            isPatientDetailsCard={isPatientDetailsCard}
+            setIsPatientDetailsCard={setIsPatientDetailsCard}
+            currPatient={currPatient}
+            setCurrPatient={setCurrPatient}
+            updatePatientDetails={updatePatientDetails}
+            deletePatient={deletePatient}
+            setMessage={setMessage}
+          />
+
+          <PatientList
+            currPage={currPage}
+            setCurrPage={setCurrPage}
+            patients={filteredPatients}
+            filters={filters}
+            isPatientDetailsCard={isPatientDetailsCard}
+            setIsPatientDetailsCard={setIsPatientDetailsCard}
+            currPatient={currPatient}
+            setCurrPatient={setCurrPatient}
+            site={site}
+          />
+        </div>
+      ) : (
+        <div className="text-3xl h-screen w-screen flex items-center justify-center">
+          Loading...
+        </div>
+      )}
+    </div>
+  );
+}
