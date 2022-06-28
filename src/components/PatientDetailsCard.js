@@ -20,7 +20,7 @@ export default function PatientDetailsCard({
       ></div>
 
       <div
-        className={`z-[100] w-[75vw] bg-gray-100 rounded-2xl max-h-0 overflow-hidden p-0 ${
+        className={`z-[100] w-screen md:w-[75vw] bg-gray-100 rounded-2xl max-h-0 overflow-hidden p-0 ${
           isPatientDetailsCard ? "py-10 max-h-screen" : ""
         } relative transition-[max-height] duration-300`}
       >
