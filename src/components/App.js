@@ -55,6 +55,7 @@ export default function App() {
   const [message, setMessage] = useState({ type: null, content: null });
   const [searchString, setSearchString] = useState("");
   const [isColumnsCard, setIsColumnsCard] = useState(false);
+  const textSearchIntervalId = useRef();
 
   useEffect(() => {
     if (navbarRef.current) setIsNavbar(true);
@@ -167,6 +168,28 @@ export default function App() {
     p.name.toLowerCase().includes(searchString.toLowerCase())
   );
 
+  const textSearch = async (e) => {
+    setSearchString(e.target.value);
+    clearInterval(textSearchIntervalId.current);
+    if (e.target.value === "") {
+      getPatients();
+    } else {
+      setIsLoading(true);
+      textSearchIntervalId.current = setTimeout(() => {
+        axios
+          .get(
+            `https://patient-manager-json-server.herokuapp.com/api/patients?site=${site}&name_like=${e.target.value}`
+          )
+          .then((response) => {
+            if (response.status === 200) {
+              setPatients(response.data);
+              setIsLoading(false);
+            }
+          });
+      }, 500);
+    }
+  };
+
   return (
     <div>
       {/* <Helmet>
@@ -199,9 +222,9 @@ export default function App() {
         setCurrPage={setCurrPage}
         setIsAddPatientCard={setIsAddPatientCard}
         searchString={searchString}
-        setSearchString={setSearchString}
         isColumnsCard={isColumnsCard}
         setIsColumnsCard={setIsColumnsCard}
+        textSearch={textSearch}
       />
       <ColumnsCard
         isColumnsCard={isColumnsCard}
@@ -241,7 +264,7 @@ export default function App() {
           <PatientList
             currPage={currPage}
             setCurrPage={setCurrPage}
-            patients={filteredPatients}
+            patients={patients}
             filters={filters}
             isPatientDetailsCard={isPatientDetailsCard}
             setIsPatientDetailsCard={setIsPatientDetailsCard}

@@ -8,6 +8,7 @@ export default function Filters({
   setSearchString,
   isColumnsCard,
   setIsColumnsCard,
+  textSearch,
 }) {
   return (
     <div className="bg-gray-100 border flex flex-col md:flex-row md:items-center py-2 px-5 space-y-5 md:space-y-0">
@@ -52,7 +53,7 @@ export default function Filters({
             type="text"
             placeholder="Search patient name..."
             value={searchString}
-            onChange={(e) => setSearchString(e.target.value)}
+            onChange={(e) => textSearch(e)}
           />
         </div>
       </div>
