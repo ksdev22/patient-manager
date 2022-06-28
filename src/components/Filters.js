@@ -11,8 +11,8 @@ export default function Filters({
   textSearch,
 }) {
   return (
-    <div className="bg-gray-100 border flex items-center py-2 px-5 space-y-5 md:space-y-0 h-[10vh]">
-      <div className="flex items-center ml-auto">
+    <div className="bg-gray-100 border flex items-center justify-end px-10 h-[10vh]">
+      <div className="flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -32,30 +32,30 @@ export default function Filters({
             Columns
           </button>
         </div>
+      </div>
 
-        <div className="pl-10 flex items-center space-x-3 ml-auto">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 ml-auto"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-          <input
-            className="border-b border-black px-2 w-3/5"
-            type="text"
-            placeholder="Search patient name..."
-            value={searchString}
-            onChange={(e) => textSearch(e)}
+      <div className="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4 ml-auto"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
-        </div>
+        </svg>
+        <input
+          className="border-b border-black px-2 w-3/4"
+          type="text"
+          placeholder="Search patient name..."
+          value={searchString}
+          onChange={(e) => textSearch(e)}
+        />
       </div>
     </div>
   );
