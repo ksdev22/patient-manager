@@ -4,7 +4,7 @@ export default function Navbar({ navbarRef, setSite }) {
       ref={navbarRef}
       className="fixed top-0 left-0 grid grid-cols-12 h-[10vh] w-full shadow-xl bg-white z-[1000]"
     >
-      <div className="col-span-9 flex items-center px-10 text-xl">
+      <div className="font-bold col-span-9 flex items-center px-10 text-xl">
         M.G. Memorial hospital
       </div>
       <div className="p-2 col-span-3 flex justify-end items-end text-sm">

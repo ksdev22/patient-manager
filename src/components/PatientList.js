@@ -11,7 +11,7 @@ export default function PatientList({
 }) {
   return (
     <div>
-      <ul className="relative hide-scrollbar pb-5 overflow-scroll h-[70vh]">
+      <ul className="relative scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full pb-5 overflow-scroll h-[70vh]">
         <li className="bg-white z-[95] grid grid-flow-col font-bold px-5 border-b-2 border-black select-none min-w-max sticky top-0 left-0">
           {filters.columns.map((column) => {
             if (column.checked) {
