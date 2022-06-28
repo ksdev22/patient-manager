@@ -62,7 +62,7 @@ export default function App() {
 
   const getPatients = async () => {
     const response = await axios.get(
-      `/api/patients?_page=${currPage}&_limit=10&site=${site}&_sort=name`
+      `https://patient-manager-json-server.herokuapp.com/api/patients?_page=${currPage}&_limit=10&site=${site}&_sort=name`
     );
     if (response.status === 200) {
       if (isMounted.current) {

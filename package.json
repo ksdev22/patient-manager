@@ -23,7 +23,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://patient-manager-json-server.herokuapp.com/",
   "eslintConfig": {
     "extends": [
       "react-app",
