@@ -1,6 +1,6 @@
 export default function PageChanger({ currPage, setCurrPage }) {
   return (
-    <div className="flex items-center justify-center space-x-5">
+    <div className="flex items-center justify-center space-x-5 fixed w-full py-5 bottom-0 left-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6 cursor-pointer"
