@@ -43,14 +43,14 @@ export default function App() {
   const [isPatientDetailsCard, setIsPatientDetailsCard] = useState(false);
   const [filters, setFilters] = useState({
     columns: [
-      { name: "name", checked: true },
-      { name: "age", checked: true },
-      { name: "gender", checked: true },
-      { name: "phone", checked: false },
-      { name: "vaccinationStatus", checked: false },
-      { name: "vaccineName", checked: false },
-      { name: "symptoms", checked: false },
-      { name: "medicalHistory", checked: false },
+      { name: "name", checked: true, sortType: "asc" },
+      { name: "age", checked: true, sortType: "asc" },
+      { name: "gender", checked: true, sortType: "asc" },
+      { name: "phone", checked: false, sortType: "asc" },
+      { name: "vaccinationStatus", checked: false, sortType: "asc" },
+      { name: "vaccineName", checked: false, sortType: "asc" },
+      { name: "symptoms", checked: false, sortType: "asc" },
+      { name: "medicalHistory", checked: false, sortType: "asc" },
     ],
   });
   const [message, setMessage] = useState({ type: null, content: null });
@@ -191,6 +191,30 @@ export default function App() {
     }
   };
 
+  const customSort = (column, sortType) => {
+    setIsLoading(true);
+    setPatients((prev) => {
+      prev.sort((a, b) => {
+        if (sortType === "asc") {
+          if (a[column] <= b[column]) {
+            return -1;
+          } else {
+            return 1;
+          }
+        } else {
+          if (a[column] <= b[column]) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      });
+      const newPrev = [...prev];
+      setIsLoading(false);
+      return newPrev;
+    });
+  };
+
   return (
     <div>
       {/* <Helmet>
@@ -268,11 +292,13 @@ export default function App() {
               setCurrPage={setCurrPage}
               patients={patients}
               filters={filters}
+              setFilters={setFilters}
               isPatientDetailsCard={isPatientDetailsCard}
               setIsPatientDetailsCard={setIsPatientDetailsCard}
               currPatient={currPatient}
               setCurrPatient={setCurrPatient}
               site={site}
+              customSort={customSort}
             />
           </div>
         ) : (
