@@ -18,7 +18,7 @@ export default function AddPatientCard({
         }`}
       ></div>
       <div
-        className={`z-[100] w-screen md:w-[75vw] bg-gray-100 rounded-2xl max-h-0 overflow-hidden p-0 ${
+        className={`z-[100] border border-black shadow-2xl w-screen md:w-[75vw] bg-gray-100 rounded-2xl max-h-0 overflow-hidden p-0 ${
           isAddPatientCard ? "py-10 max-h-screen h-[90vh]" : ""
         } relative transition-[max-height] duration-300`}
       >
