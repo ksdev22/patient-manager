@@ -221,7 +221,7 @@ export default function App() {
   };
 
   return (
-    <div className="snap-y snap-mandatory">
+    <div className="snap-y snap-mandatory max-w-[100vw]">
       {/* <Helmet>
         <title>M.G. Memorial hospital</title>
       </Helmet> */}

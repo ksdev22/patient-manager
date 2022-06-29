@@ -19,7 +19,7 @@ export default function PatientList({
         // onMouseOver={(e) => patientListScroll()}
         onMouseOver={(e) => patientListScroll()}
       >
-        <div className="bg-white z-[95] grid grid-flow-col font-bold px-5 border-b-2 border-black select-none min-w-max sticky top-0 left-0">
+        <li className="bg-white z-[95] grid grid-flow-col font-bold px-5 border-b-2 border-black select-none min-w-max sticky top-0 left-0">
           {filters.columns.map((column) => {
             if (column.checked) {
               return (
@@ -78,7 +78,7 @@ export default function PatientList({
               return null;
             }
           })}
-        </div>
+        </li>
 
         {patients.map((patient) => (
           <li
