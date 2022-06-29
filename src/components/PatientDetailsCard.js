@@ -43,7 +43,7 @@ export default function PatientDetailsCard({
                 Name
               </label>
               <input
-                className="px-2"
+                className="px-2 rounded-2xl"
                 type="text"
                 name="name"
                 id="name"
@@ -61,7 +61,7 @@ export default function PatientDetailsCard({
                 Age
               </label>
               <input
-                className="px-2"
+                className="px-2 rounded-2xl"
                 type="number"
                 name="age"
                 id="age"
@@ -79,6 +79,7 @@ export default function PatientDetailsCard({
                 Gender
               </label>
               <select
+                className="px-2 rounded-2xl"
                 name="gender"
                 id="gender"
                 value={currPatient.gender}
@@ -98,7 +99,7 @@ export default function PatientDetailsCard({
                 Phone
               </label>
               <input
-                className="px-2"
+                className="px-2 rounded-2xl"
                 type="text"
                 name="phone"
                 id="phone"
@@ -115,6 +116,7 @@ export default function PatientDetailsCard({
                 Vaccination Status
               </label>
               <select
+                className="px-2 rounded-2xl"
                 name="vaccination-status"
                 id="vaccination-status"
                 value={currPatient.vaccinationStatus}
@@ -136,6 +138,7 @@ export default function PatientDetailsCard({
                 Vaccine Name
               </label>
               <select
+                className="px-2 rounded-2xl"
                 name="vaccine-name"
                 id="vaccine-name"
                 value={currPatient.vaccineName}
@@ -159,7 +162,7 @@ export default function PatientDetailsCard({
                 name="symptoms"
                 id="symptoms"
                 rows="5"
-                className="p-2"
+                className="p-2 rounded-2xl"
                 value={currPatient.symptoms}
                 onChange={(e) =>
                   setCurrPatient((prev) => {
@@ -176,7 +179,7 @@ export default function PatientDetailsCard({
                 name="medical-history"
                 id="medical-history"
                 rows="5"
-                className="p-2"
+                className="p-2 rounded-2xl"
                 value={currPatient.medicalHistory}
                 onChange={(e) =>
                   setCurrPatient((prev) => {

@@ -50,7 +50,7 @@ export default function AddPatientCard({
                 Name
               </label>
               <input
-                className="px-2"
+                className="px-2 rounded-2xl"
                 type="text"
                 name="name"
                 id="name"
@@ -68,7 +68,7 @@ export default function AddPatientCard({
                 Age
               </label>
               <input
-                className="px-2"
+                className="px-2 rounded-2xl"
                 type="number"
                 name="age"
                 id="age"
@@ -86,6 +86,7 @@ export default function AddPatientCard({
                 Gender
               </label>
               <select
+                className="px-2 rounded-2xl"
                 name="gender"
                 id="gender"
                 value={newPatient.gender}
@@ -105,7 +106,7 @@ export default function AddPatientCard({
                 Phone
               </label>
               <input
-                className="px-2"
+                className="px-2 rounded-2xl"
                 type="text"
                 name="phone"
                 id="phone"
@@ -122,6 +123,7 @@ export default function AddPatientCard({
                 Vaccination Status
               </label>
               <select
+                className="px-2 rounded-2xl"
                 name="vaccination-status"
                 id="vaccination-status"
                 value={newPatient.vaccinationStatus}
@@ -143,6 +145,7 @@ export default function AddPatientCard({
                 Vaccine Name
               </label>
               <select
+                className="px-2 rounded-2xl"
                 name="vaccine-name"
                 id="vaccine-name"
                 value={newPatient.vaccineName}
@@ -165,7 +168,7 @@ export default function AddPatientCard({
               <textarea
                 name="symptoms"
                 id="symptoms"
-                className="p-2"
+                className="p-2 rounded-2xl"
                 rows="5"
                 value={newPatient.symptoms}
                 onChange={(e) =>
@@ -182,7 +185,7 @@ export default function AddPatientCard({
               <textarea
                 name="medical-history"
                 id="medical-history"
-                className="p-2"
+                className="p-2 rounded-2xl"
                 rows="5"
                 value={newPatient.medicalHistory}
                 onChange={(e) =>
