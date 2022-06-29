@@ -24,7 +24,7 @@ export default function PatientDetailsCard({
           isPatientDetailsCard ? "py-10 max-h-screen h-[90vh]" : ""
         } relative transition-[max-height] duration-300`}
       >
-        <div className="text-center text-xl pb-2 font-mono border-b-2">
+        <div className="text-center text-2xl border-b-2 pb-2 font-mono">
           Patient Details
         </div>
         <div

@@ -22,7 +22,7 @@ export default function AddPatientCard({
           isAddPatientCard ? "py-10 max-h-screen h-[90vh]" : ""
         } relative transition-[max-height] duration-300`}
       >
-        <div className="text-center text-3xl border-b-2 pb-2 font-mono">
+        <div className="text-center text-2xl border-b-2 pb-2 font-mono">
           Add Patient
         </div>
         <div
