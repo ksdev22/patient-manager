@@ -216,7 +216,7 @@ export default function App() {
   };
 
   return (
-    <div>
+    <div className="snap-y snap-mandatory">
       {/* <Helmet>
         <title>M.G. Memorial hospital</title>
       </Helmet> */}
@@ -232,7 +232,7 @@ export default function App() {
           }}
         ></div>
       )}
-      <div className="flex items-center justify-end px-10 h-[10vh]">
+      <div className="snap-start flex items-center justify-end px-10 h-[10vh]">
         <button
           className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
           onClick={() => setIsAddPatientCard(true)}

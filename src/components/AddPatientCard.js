@@ -46,7 +46,9 @@ export default function AddPatientCard({
         <div className="relative max-h-[75vh] scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-300 overflow-y-scroll px-10">
           <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-rows-2">
-              <label htmlFor="name">Name</label>
+              <label className="font-bold mb-1" htmlFor="name">
+                Name
+              </label>
               <input
                 className="px-2"
                 type="text"
@@ -62,7 +64,9 @@ export default function AddPatientCard({
               />
             </div>
             <div className="grid grid-rows-2">
-              <label htmlFor="age">Age</label>
+              <label className="font-bold mb-1" htmlFor="age">
+                Age
+              </label>
               <input
                 className="px-2"
                 type="number"
@@ -78,7 +82,9 @@ export default function AddPatientCard({
               />
             </div>
             <div className="grid grid-rows-2">
-              <label htmlFor="gender">Gender</label>
+              <label className="font-bold mb-1" htmlFor="gender">
+                Gender
+              </label>
               <select
                 name="gender"
                 id="gender"
@@ -95,7 +101,9 @@ export default function AddPatientCard({
               </select>
             </div>
             <div className="grid grid-rows-2">
-              <label htmlFor="phone">Phone</label>
+              <label className="font-bold mb-1" htmlFor="phone">
+                Phone
+              </label>
               <input
                 className="px-2"
                 type="text"
@@ -110,7 +118,9 @@ export default function AddPatientCard({
               />
             </div>
             <div className="grid grid-rows-2">
-              <label htmlFor="vaccination-status">Vaccination Status</label>
+              <label className="font-bold mb-1" htmlFor="vaccination-status">
+                Vaccination Status
+              </label>
               <select
                 name="vaccination-status"
                 id="vaccination-status"
@@ -129,7 +139,9 @@ export default function AddPatientCard({
               </select>
             </div>
             <div className="grid grid-rows-2">
-              <label htmlFor="vaccine-name">Vaccine Name</label>
+              <label className="font-bold mb-1" htmlFor="vaccine-name">
+                Vaccine Name
+              </label>
               <select
                 name="vaccine-name"
                 id="vaccine-name"
@@ -147,7 +159,9 @@ export default function AddPatientCard({
               </select>
             </div>
             <div className="flex flex-col">
-              <label htmlFor="symptoms">Symptoms</label>
+              <label className="font-bold mb-1" htmlFor="symptoms">
+                Symptoms
+              </label>
               <textarea
                 name="symptoms"
                 id="symptoms"
@@ -162,7 +176,9 @@ export default function AddPatientCard({
               ></textarea>
             </div>
             <div className="flex flex-col">
-              <label htmlFor="medical-history">Medical History</label>
+              <label className="font-bold mb-1" htmlFor="medical-history">
+                Medical History
+              </label>
               <textarea
                 name="medical-history"
                 id="medical-history"
