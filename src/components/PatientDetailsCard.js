@@ -9,22 +9,22 @@ export default function PatientDetailsCard({
 }) {
   return (
     <div
-      className={`z-[101] fixed top-0 left-0 h-screen w-screen flex justify-center items-center ${
+      className={`z-[1004] fixed top-0 left-0 h-screen w-screen flex justify-center items-center ${
         isPatientDetailsCard ? "" : "invisible"
       }`}
     >
       <div
-        className={`absolute top-0 left-0 h-screen w-screen opacity-75 bg-white z-[99] ${
+        className={`absolute top-0 left-0 h-screen w-screen opacity-75 bg-white z-[1003] ${
           isPatientDetailsCard ? "" : "invisible"
         }`}
       ></div>
 
       <div
-        className={`z-[100] w-screen md:w-[75vw] bg-gray-100 rounded-2xl max-h-0 overflow-hidden p-0 ${
-          isPatientDetailsCard ? "py-10 max-h-screen" : ""
+        className={`z-[1004] border border-black shadow-2xl w-screen md:w-[75vw] bg-gray-100 rounded-2xl max-h-0 overflow-hidden p-0 ${
+          isPatientDetailsCard ? "py-10 max-h-screen h-[90vh]" : ""
         } relative transition-[max-height] duration-300`}
       >
-        <div className="text-center text-xl pb-2 font-mono">
+        <div className="text-center text-xl pb-2 font-mono border-b-2">
           Patient Details
         </div>
         <div
@@ -36,7 +36,7 @@ export default function PatientDetailsCard({
           X
         </div>
 
-        <div className="relative max-h-[60vh] overflow-y-scroll px-10">
+        <div className="relative max-h-[75vh] scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-300 overflow-y-scroll px-10">
           <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-rows-2">
               <label htmlFor="name">Name</label>

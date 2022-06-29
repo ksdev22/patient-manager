@@ -19,7 +19,7 @@ export default function AddPatientCard({
       ></div>
       <div
         className={`z-[100] w-screen md:w-[75vw] bg-gray-100 rounded-2xl max-h-0 overflow-hidden p-0 ${
-          isAddPatientCard ? "py-10 max-h-screen" : ""
+          isAddPatientCard ? "py-10 max-h-screen h-[90vh]" : ""
         } relative transition-[max-height] duration-300`}
       >
         <div className="text-center text-3xl border-b-2 pb-2 font-mono">
@@ -43,7 +43,7 @@ export default function AddPatientCard({
         >
           X
         </div>
-        <div className="relative max-h-[60vh] overflow-y-scroll px-10">
+        <div className="relative max-h-[75vh] scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-300 overflow-y-scroll px-10">
           <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-rows-2">
               <label htmlFor="name">Name</label>
