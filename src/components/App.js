@@ -57,6 +57,7 @@ export default function App() {
   const [searchString, setSearchString] = useState("");
   const [isColumnsCard, setIsColumnsCard] = useState(false);
   const textSearchIntervalId = useRef();
+  const addPatientButtonRef = useRef();
 
   useEffect(() => {
     if (navbarRef.current) setIsNavbar(true);
@@ -215,6 +216,9 @@ export default function App() {
     });
   };
 
+  const patientListScroll = () => {
+    addPatientButtonRef.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="snap-y snap-mandatory">
       {/* <Helmet>
@@ -234,6 +238,7 @@ export default function App() {
       )}
       <div className="snap-start flex items-center justify-end px-10 h-[10vh]">
         <button
+          ref={addPatientButtonRef}
           className="text-sm p-2 px-4 rounded text-white bg-gray-500 hover:bg-gray-600"
           onClick={() => setIsAddPatientCard(true)}
         >
@@ -299,6 +304,7 @@ export default function App() {
               setCurrPatient={setCurrPatient}
               site={site}
               customSort={customSort}
+              patientListScroll={patientListScroll}
             />
           </div>
         ) : (
