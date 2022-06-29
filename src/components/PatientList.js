@@ -77,7 +77,6 @@ export default function PatientList({
         className="relative scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-300 scrollbar-thumb-rounded-full scrollbar-track-rounded-full overflow-scroll h-[60vh] pb-5"
         // onMouseOver={(e) => patientListScroll()}
         onMouseEnter={(e) => patientListScroll()}
-        onScroll={(e) => console.log("hello")}
       >
         {patients.map((patient) => (
           <li
