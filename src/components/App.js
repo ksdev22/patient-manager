@@ -88,13 +88,6 @@ export default function App() {
     };
   }, [site, currPage]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      addPatientButtonRef.current.scrollIntoView({ behavior: "smooth" });
-    }, 2000);
-    return () => {};
-  }, []);
-
   const submitAddPatient = async (newPatientData) => {
     setIsLoading(true);
     const response = await axios.post(
