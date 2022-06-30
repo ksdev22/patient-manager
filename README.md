@@ -1,10 +1,14 @@
 # Patient Manager
-To run the app :
+
+A Progressive Web App available at [Patient-Manager](https://qure-ai-patient-manager.netlify.app/)
+
+To run the app locally:
+
 1. Clone the repository.
 2. Install dependencies.
-    > npm install
-3. Fake database is created using **json-server** package, which is using the **db.json** file present under **/server** folder.
-    1. To run the server, run the following command inside **/server** folder :
-        > json-server --watch db.json --routes routes.json --port 5000
+   > npm install
+3. Server is already running using **json-server** package.
+   1. [Server](https://patient-manager-json-server.herokuapp.com/)
+   2. [GitHub](https://github.com/ksdev22/patient-manager-json-server)
 4. Finally, run the following command to run the app on localhost :
-    > npm start
+   > npm start
