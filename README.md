@@ -1,17 +1,19 @@
-# Patient Manager
+# Patient Manager App
 
 A Progressive Web App available at [Patient-Manager](https://qure-ai-patient-manager.netlify.app/)
+
+The app is deployed on Netlify.
 
 To run the app locally:
 
 1. Clone the repository.
 2. Install dependencies.
    > npm install
-3. Server/database is created using **json-server** package and is deployed.
+3. Finally, run the following command to run the app on localhost :
+   > npm start
+4. **Note** - Server/database is already created using **json-server** package and is deployed on Heroku.
    1. [Server](https://patient-manager-json-server.herokuapp.com/)
    2. [GitHub](https://github.com/ksdev22/patient-manager-json-server)
-4. Finally, run the following command to run the app on localhost :
-   > npm start
 
 ## Features
 
