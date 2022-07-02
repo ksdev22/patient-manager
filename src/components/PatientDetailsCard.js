@@ -45,6 +45,7 @@ export default function PatientDetailsCard({
                 Name
               </label>
               <input
+                required
                 className="px-2 rounded-2xl"
                 type="text"
                 name="name"
@@ -218,8 +219,8 @@ export default function PatientDetailsCard({
                   age: "",
                   gender: "Male",
                   phone: "",
-                  vaccinationStatus: "Fully Vaccinated",
-                  vaccineName: "Covaxin",
+                  vaccinationStatus: "Not Vaccinated",
+                  vaccineName: "Not Vaccinated",
                   symptoms: "",
                   medicalHistory: "",
                 });
@@ -233,14 +234,6 @@ export default function PatientDetailsCard({
               onClick={(e) => {
                 e.preventDefault();
                 updatePatientDetails(currPatient);
-                setIsPatientDetailsCard(false);
-                setMessage({
-                  type: "updated",
-                  content: "Patient record updated!",
-                });
-                setTimeout(() => {
-                  setMessage({ type: null, content: null });
-                }, 4000);
               }}
             >
               Save

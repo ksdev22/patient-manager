@@ -25,8 +25,8 @@ export default function App() {
     age: "",
     gender: "Male",
     phone: "",
-    vaccinationStatus: "Fully Vaccinated",
-    vaccineName: "Covaxin",
+    vaccinationStatus: "Not Vaccinated",
+    vaccineName: "Not Vaccinated",
     symptoms: "",
     medicalHistory: "",
   });
@@ -35,8 +35,8 @@ export default function App() {
     age: "",
     gender: "Male",
     phone: "",
-    vaccinationStatus: "Fully Vaccinated",
-    vaccineName: "Covaxin",
+    vaccinationStatus: "Not Vaccinated",
+    vaccineName: "Not Vaccinated",
     symptoms: "",
     medicalHistory: "",
   });
@@ -89,56 +89,94 @@ export default function App() {
   }, [site, currPage]);
 
   const submitAddPatient = async (newPatientData) => {
-    setIsLoading(true);
-    const response = await axios.post(
-      "https://patient-manager-json-server.herokuapp.com/api/patients",
-      {
-        ...newPatientData,
-        site: site,
-      }
-    );
-    if (response.status === 201) {
-      getPatients();
-      setNewPatient({
-        name: "",
-        age: "",
-        gender: "Male",
-        phone: "",
-        vaccinationStatus: "Fully Vaccinated",
-        vaccineName: "Covaxin",
-        symptoms: "",
-        medicalHistory: "",
-      });
+    const { name, vaccinationStatus, vaccineName } = newPatientData;
+    if (
+      name === "" ||
+      (vaccinationStatus === "Not Vaccinated" &&
+        vaccineName !== "Not Vaccinated") ||
+      (vaccinationStatus !== "Not Vaccinated" &&
+        vaccineName === "Not Vaccinated")
+    ) {
+      alert("Invalid details!");
     } else {
-      alert("Error");
-      console.log(response);
+      const response = await axios.post(
+        "https://patient-manager-json-server.herokuapp.com/api/patients",
+        {
+          ...newPatientData,
+          site: site,
+        }
+      );
+      if (response.status === 201) {
+        setIsLoading(true);
+        setIsAddPatientCard(false);
+        setMessage({
+          type: "created",
+          content: "Patient record created!",
+        });
+        setTimeout(() => {
+          setMessage({ type: null, content: null });
+        }, 2000);
+        getPatients();
+        setNewPatient({
+          name: "",
+          age: "",
+          gender: "Male",
+          phone: "",
+          vaccinationStatus: "Not Vaccinated",
+          vaccineName: "Not Vaccinated",
+          symptoms: "",
+          medicalHistory: "",
+        });
+      } else {
+        alert("Error");
+        console.log(response);
+      }
     }
   };
 
   const updatePatientDetails = async (patientDetails) => {
-    setIsLoading(true);
-    const response = await axios.put(
-      `https://patient-manager-json-server.herokuapp.com/api/patients/${patientDetails.id}`,
-      {
-        ...patientDetails,
-        site: site,
-      }
-    );
-    if (response.status === 200) {
-      getPatients();
-      setCurrPatient({
-        name: "",
-        age: "",
-        gender: "Male",
-        phone: "",
-        vaccinationStatus: "Fully Vaccinated",
-        vaccineName: "Covaxin",
-        symptoms: "",
-        medicalHistory: "",
-      });
+    const { name, vaccinationStatus, vaccineName } = patientDetails;
+    if (
+      name === "" ||
+      (vaccinationStatus === "Not Vaccinated" &&
+        vaccineName !== "Not Vaccinated") ||
+      (vaccinationStatus !== "Not Vaccinated" &&
+        vaccineName === "Not Vaccinated")
+    ) {
+      alert("Invalid details!");
     } else {
-      console.log(response);
-      alert("Error");
+      setIsLoading(true);
+      const response = await axios.put(
+        `https://patient-manager-json-server.herokuapp.com/api/patients/${patientDetails.id}`,
+        {
+          ...patientDetails,
+          site: site,
+        }
+      );
+      if (response.status === 200) {
+        setIsPatientDetailsCard(false);
+        setMessage({
+          type: "updated",
+          content: "Patient record updated!",
+        });
+        setTimeout(() => {
+          setMessage({ type: null, content: null });
+        }, 4000);
+        getPatients();
+        setCurrPatient({
+          name: "",
+          age: "",
+          gender: "Male",
+          phone: "",
+          vaccinationStatus: "Not Vaccinated",
+          vaccineName: "Not Vaccinated",
+          symptoms: "",
+          medicalHistory: "",
+        });
+      } else {
+        console.log(response);
+        alert("Error");
+      }
     }
   };
 
@@ -155,8 +193,8 @@ export default function App() {
         age: "",
         gender: "Male",
         phone: "",
-        vaccinationStatus: "Fully Vaccinated",
-        vaccineName: "Covaxin",
+        vaccinationStatus: "Not Vaccinated",
+        vaccineName: "Not Vaccinated",
         symptoms: "",
         medicalHistory: "",
       });

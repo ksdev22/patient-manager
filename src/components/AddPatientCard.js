@@ -32,8 +32,8 @@ export default function AddPatientCard({
               age: "",
               gender: "Male",
               phone: "",
-              vaccinationStatus: "Fully Vaccinated",
-              vaccineName: "Covaxin",
+              vaccinationStatus: "Not Vaccinated",
+              vaccineName: "Not Vaccinated",
               symptoms: "",
               medicalHistory: "",
             });
@@ -51,6 +51,7 @@ export default function AddPatientCard({
                 Name
               </label>
               <input
+                required={true}
                 className="px-2 rounded-2xl"
                 type="text"
                 name="name"
@@ -134,11 +135,11 @@ export default function AddPatientCard({
                   })
                 }
               >
+                <option value="Not Vaccinated">Not Vaccinated</option>
                 <option value="Fully Vaccinated">Fully Vaccinated</option>
                 <option value="Partially Vaccinated">
                   Partially Vaccinated
                 </option>
-                <option value="Not Vaccinated">Not Vaccinated</option>
               </select>
             </div>
             <div className="grid grid-rows-2">
@@ -207,8 +208,8 @@ export default function AddPatientCard({
                   age: "",
                   gender: "Male",
                   phone: "",
-                  vaccinationStatus: "Fully Vaccinated",
-                  vaccineName: "Covaxin",
+                  vaccinationStatus: "Not Vaccinated",
+                  vaccineName: "Not Vaccinated",
                   symptoms: "",
                   medicalHistory: "",
                 });
@@ -221,14 +222,6 @@ export default function AddPatientCard({
               onClick={(e) => {
                 e.preventDefault();
                 submitAddPatient(newPatient);
-                setIsAddPatientCard(false);
-                setMessage({
-                  type: "created",
-                  content: "Patient record created!",
-                });
-                setTimeout(() => {
-                  setMessage({ type: null, content: null });
-                }, 2000);
               }}
             >
               Submit
