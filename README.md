@@ -1,6 +1,6 @@
 # Patient Manager App
 
-A Progressive Web App available at [Patient-Manager](https://qure-ai-patient-manager.netlify.app/)
+A Progressive Web App available at [Patient-Manager](https://patient-manager-ksdev22.netlify.app/)
 
 The app is deployed on Netlify.
 
